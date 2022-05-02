@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import EthProvider, { useEthContext } from "../context/EthProvider";
 import "../styles/globals.css";
-
+import { ToastContainer } from "react-toastify";
+import Transaction from "../components/Transaction";
+import "react-toastify/dist/ReactToastify.css";
+import { Container } from "@mui/material";
 function MyApp({ Component, pageProps }) {
   const [showing, setShowing] = useState(false);
   useEffect(() => {
@@ -15,7 +18,13 @@ function MyApp({ Component, pageProps }) {
     return (
       <EthProvider>
         <div>
+          <ToastContainer />
           <Dialog />
+          <Container sx={{
+            py: 3,
+          }}>
+          <Transaction />
+          </Container>
           <Component {...pageProps} />
         </div>
       </EthProvider>
@@ -32,8 +41,7 @@ function MyApp({ Component, pageProps }) {
 const Dialog = () => {
   const { chainId = "", connected } = useEthContext();
   return window.ethereum &&
-    parseInt(chainId?.split("0x")[1], 16) !==
-      parseInt(process.env.NEXT_PUBLIC_CHAINID)
+    parseInt(chainId, 16) !== parseInt(process.env.NEXT_PUBLIC_CHAINID)
     ? connected && <Modal />
     : "";
 };

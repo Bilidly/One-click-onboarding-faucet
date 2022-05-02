@@ -1,0 +1,164 @@
+.headingContainer {
+  padding: 24px;
+}
+
+.heading {
+  font-size: 24px !important;
+  width: 100%;
+  text-align: center;
+}
+
+.transactionsContainer {
+  border-radius: 12px;
+  background: rgb(77, 70, 70);
+  border: 1px solid rgba(108,108,123, 0.2);
+  padding: 24px;
+  margin-bottom: 12px;
+}
+
+.transaction {
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(108,108,123, 0.2);
+  cursor: pointer;
+}
+
+.transaction:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.closeIconbutton {
+  position: absolute !important;
+  right: 0px;
+  top: 0px;
+}
+
+.transactionInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.capitalise {
+  text-transform: capitalize !important;
+}
+
+/* .transactionExpanded {
+} */
+
+.iconColor {
+  color: #fff;
+}
+
+.transaactionHash {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.orangeIcon {
+  color: #ffc512 !important;
+}
+.greenIcon {
+  color: #49a766 !important;
+}
+.redIcon {
+  color: #dc3545 !important;
+}
+
+.errorText {
+  color: #dc3545 !important;
+  padding-top: 12px !important;
+}
+
+.animClass {
+  width: 130px;
+  margin: auto;
+  padding: 30px 0 20px 0;
+}
+
+.dialogScale {
+  max-width: 640px;
+  margin: auto;
+  text-align: center;
+}
+
+.successDialog {
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 20px !important;
+}
+
+.successTitle {
+  padding: 0 40px !important;
+  text-align: center !important;
+  margin: 20px 0 10px 0 !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+}
+
+.successText {
+  padding: 0 40px !important;
+  text-align: center !important;
+  line-height: 1.5rem !important;
+  margin-bottom: 40px !important;
+  color: rgba(176, 154, 126,0.8) !important;
+}
+
+.viewDetailsText {
+  background: none;
+  margin: 10px auto 20px auto !important;
+  font-size: 14px !important;
+}
+
+.viewDetailsText a {
+  color: #ffb405 !important;
+}
+
+.viewDetailsText a:hover {
+  color: #FFF !important;
+}
+
+.newWindowIcon {
+  font-size: 15px !important;
+  margin-bottom: -2px;
+  margin-left: 3px;
+}
+
+@media screen and (max-width: 1200px) {
+
+  .accountButton {
+    display: flex;
+    align-items: center;
+    margin-left: 0 !important;
+    position: fixed !important;
+    z-index: 10030 !important;
+    top: 17px !important;
+    right: 10px !important;
+  }
+}
+
+.accountButton {
+  display: flex;
+  align-items: center;
+  margin-left: 14px !important;
+  min-height: 50px;
+  background-color: rgb(77, 70, 70) !important;
+  border: 0 !important;
+  border-radius: 40px !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+  padding-left: 26px !important;
+  padding-right: 26px !important;
+  position: fixed;
+  z-index: 10030 !important;
+}
+
+@media screen and (max-width: 560px) {
+  .accountButton {
+    min-height: 40px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    top: 10px !important;
+  }
+}
