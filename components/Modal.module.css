@@ -1,0 +1,62 @@
+
+.chainInvalidError {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: fixed;
+  left: 0;
+  top: 0px;
+  text-align: center;
+  min-width: 100%;
+  height: 100vh;
+  flex-wrap: wrap;
+  background: rgba(38, 29, 17,0.9);
+  z-index: 5 !important;
+}
+
+/* .ErrorContent {
+} */
+
+.ErrorTxt {
+  color: #FFF;
+  max-width: 420px;
+  line-height: 1.5em !important;
+  font-size: 1.4em !important;
+}
+
+
+.switchNetworkBtn {
+  background: rgba(89, 87, 81, 1) !important;
+  color: rgba(255, 180, 5, 1) !important;
+  border-radius: 60px !important;
+  padding: 12px 24px 14px 24px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  border: 1px solid rgba(255, 180, 5, 1) !important;
+  margin-top: 30px !important;
+  transform: scale(0.9);
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+
+.switchNetworkBtn:hover {
+  background: rgba(255, 180, 5, 1) !important;
+  color: #291c11 !important;
+  text-transform: none !important;
+  border: 1px solid rgba(255, 180, 5, 1) !important;
+  transform: scale(0.9);
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+
+.networkIcon {
+  font-size: 100px !important;
+  margin-bottom: 20px;
+}
