@@ -26,7 +26,6 @@ Onboarding users to a testnet can be painful, as users need to complete multiple
 ### How to use it?
 Install dependencies
 ```sh
-cd dillinger
 npm i
 ```
 
