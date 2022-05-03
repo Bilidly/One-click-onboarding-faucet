@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { getWeb3Provider } from "../web3";
 import { injected } from "../web3/connector";
-import Greeter from "../artifacts/contracts/Greeter.sol/Greeter.json";
+import Faucet from "../artifacts/contracts/BilidlyFaucet.sol/BilidlyFaucet.json";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import { BigNumber } from "bignumber.js";
@@ -13,12 +13,13 @@ const EthContext = createContext({
   popup: {},
   data: {},
   setAccounts: () => {},
-  useFucet: () => {},
-  fucetLoading: false,
+  useFaucet: () => {},
+  faucetLoading: false,
 });
 EthContext.displayName = "EthContext";
 export const useEthContext = () => useContext(EthContext);
-const ABI_TOKEN = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+
+const FAUCET_ADDRESS = "0x38e89dec9bc2b137a6fdb42285bdad2800f85890"
 const BUSD_ADDRESS = "0x4df462774bc8f79e96ed0633f2cd8b3526dc960a";
 const USDC_ADDRESS = "0xea022b43d76fd19f80790c674674436060884084";
 const ALPACA_ADDRESS = "0x805429aa16b52a0fde69ccfd5c23ba394374078a";
@@ -26,10 +27,11 @@ const CAKE_ADDRESS = "0xd8215b742f9825071ad318b54539dd20a62d8839";
 const BETH_ADDRESS = "0xd46ab0a9bfd56fffaf5f31dec12f4d17bac0d77a";
 const BBTC_ADDRESS = "0xf742dc29844cc43524365fe2c438cda8493a71af";
 const RENBTC_ADDRESS = "0xa3746e22af7ffc9f85d10ba2767d0d036dbb8e5f";
+
 const EthProvider = ({ children }) => {
   const [accounts, setAccounts] = useState([]);
   const [popup, setPopup] = useState({});
-  const [fucetLoading, setFucetLoading] = useState(false);
+  const [faucetLoading, setFaucetLoading] = useState(false);
   const [connected, setConnected] = useState(false);
   const [chainId, setChainId] = useState(null);
   const [web3Context, setWeb3Context] = useState(null);
@@ -57,15 +59,17 @@ const EthProvider = ({ children }) => {
     });
   };
   useEffect(()=> {
-    console.log("useEffect", fucetLoading)
-  },[fucetLoading])
-  const useFucet = async () => {
+    console.log("useEffect", faucetLoading)
+  },[faucetLoading])
+  const useFaucet = async () => {
     if (accounts.length > 0) {
-      setFucetLoading(true);
+      setFaucetLoading(true);
       const web3 = getWeb3Provider(web3Context);
       const testnetTokenTXID = uuidv4();
       const gasPrice = await getGasPrice();
-      const tokenContract = new web3?.eth.Contract(Greeter.abi, ABI_TOKEN);
+      console.log(web3, testnetTokenTXID, gasPrice)
+      console.log(Faucet.abi, FAUCET_ADDRESS)
+      const tokenContract = new web3?.eth.Contract(Faucet.abi, FAUCET_ADDRESS);
       setPopup({
         title: `Request fund from faucet`,
         verb: "Received faucet tokens",
@@ -80,8 +84,8 @@ const EthProvider = ({ children }) => {
       await _callContractWait(
         web3,
         tokenContract,
-        "greet",
-        [],
+        "sendMultiTokens",
+        [[BUSD_ADDRESS, USDC_ADDRESS, ALPACA_ADDRESS, CAKE_ADDRESS, BETH_ADDRESS, BBTC_ADDRESS, RENBTC_ADDRESS], accounts[0]],
         accounts[0],
         gasPrice,
         testnetTokenTXID,
@@ -91,7 +95,7 @@ const EthProvider = ({ children }) => {
           }
         }
       );
-      setFucetLoading(false);
+      setFaucetLoading(false);
     }
   };
 
@@ -198,12 +202,12 @@ const EthProvider = ({ children }) => {
       value={{
         accounts,
         connected,
-        fucetLoading,
+        faucetLoading,
         chainId,
         setAccounts,
         data,
         popup,
-        useFucet
+        useFaucet
       }}
     >
       {children}

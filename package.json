@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.3",
+    "@openzeppelin/contracts": "^4.6.0",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/network-connector": "^6.2.9",
     "bignumber.js": "^9.0.2",

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useEthContext } from "../context/EthProvider";
 import classes from "../styles/Home.module.css";
 export default function Home() {
-  const { accounts, connected, setAccounts, useFucet, fucetLoading } =
+  const { accounts, connected, setAccounts, useFaucet, faucetLoading } =
     useEthContext();
   const [error, setError] = useState(null);
   const connect = useCallback(() => {
@@ -58,12 +58,12 @@ export default function Home() {
         )}
         {connected ? (
           <Button
-            onClick={useFucet}
+            onClick={useFaucet}
             className={classes.buttonFaucet}
-            disabled={fucetLoading}
+            disabled={faucetLoading}
           >
-            {fucetLoading ? `Requesting tokens` : `Get testnet token set`}
-            {fucetLoading && (
+            {faucetLoading ? `Requesting tokens` : `Get testnet token set`}
+            {faucetLoading && (
               <CircularProgress size={10} className={classes.loadingCircle} />
             )}
           </Button>
@@ -71,7 +71,7 @@ export default function Home() {
           <Button
             onClick={connect}
             className={classes.buttonFaucet}
-            disabled={fucetLoading}
+            disabled={faucetLoading}
           >
             Connect
           </Button>
